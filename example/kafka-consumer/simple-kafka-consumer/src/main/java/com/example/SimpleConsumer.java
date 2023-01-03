@@ -15,7 +15,7 @@ import java.util.Properties;
 public class SimpleConsumer {
     private final static Logger logger = LoggerFactory.getLogger(SimpleConsumer.class);
     private final static String TOPIC_NAME = "test";
-    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     private final static String GROUP_ID = "test-group";
 
     public static void main(String[] args) {
@@ -35,5 +35,9 @@ public class SimpleConsumer {
                 logger.info("record:{}", record);
             }
         }
+
+        // 실행 후 producer 실행
+        // $ bin/kafka-console-producer.sh --bootstrap-server localhost:9092 --topic test
+        // > message
     }
 }
