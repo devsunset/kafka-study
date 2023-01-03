@@ -110,6 +110,8 @@ example/kafka-producer/simple-kafka-producer
 	- ProducerWithKeyValue.java
 	- ProducerExactPartition.java
 	- ProducerWithCustomPartitioner.java
-	CustomPartitioner.java
-	-
+	   CustomPartitioner.java
+	- ProducerWithSyncCallback.java
+	- ProducerWithAsyncCallback.java
+	   ProducerWithAsyncCallback.java
 
