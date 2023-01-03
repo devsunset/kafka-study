@@ -110,8 +110,8 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- ProducerWithKeyValue.java
 	- ProducerExactPartition.java
 	- ProducerWithCustomPartitioner.java
-	CustomPartitioner.java
+	  CustomPartitioner.java
 	- ProducerWithSyncCallback.java
 	- ProducerWithAsyncCallback.java
-	ProducerWithAsyncCallback.java
+	  ProducerWithAsyncCallback.java
 
