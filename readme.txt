@@ -106,10 +106,10 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 
 ### example
 example/kafka-producer/simple-kafka-producer
-- SimpleProducer.java
-- ProducerWithKeyValue.java
-- ProducerExactPartition.java
-- ProducerWithCustomPartitioner.java
-   CustomPartitioner.java
--
+	- SimpleProducer.java
+	- ProducerWithKeyValue.java
+	- ProducerExactPartition.java
+	- ProducerWithCustomPartitioner.java
+	CustomPartitioner.java
+	-
 
