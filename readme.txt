@@ -22,7 +22,7 @@ https://ksqldb.io/
 
 https://kafka.apache.org/quickstart
 
-- book 예제 소스 
+- 아파치 카프카 - book 예제 소스 
 https://github.com/bjpublic/apache-kafka-with-java
 
 - blog
