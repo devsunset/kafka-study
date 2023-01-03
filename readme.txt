@@ -105,13 +105,13 @@ $ vi delete-topic.json
 $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-file delete-topic.json
 
 ### example
-example/kafka-producer/simple-kafka-producer
+* example/kafka-producer/simple-kafka-producer
 	- SimpleProducer.java
 	- ProducerWithKeyValue.java
 	- ProducerExactPartition.java
 	- ProducerWithCustomPartitioner.java
-	   CustomPartitioner.java
+	CustomPartitioner.java
 	- ProducerWithSyncCallback.java
 	- ProducerWithAsyncCallback.java
-	   ProducerWithAsyncCallback.java
+	ProducerWithAsyncCallback.java
 
