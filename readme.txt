@@ -104,23 +104,6 @@ $ vi delete-topic.json
 {"partitions": [{"topic":"test" ,"partition": 0, "offset": 50}], "version":1}
 $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-file delete-topic.json
 
-# 카프카 브로커 클러스터 주키퍼 
-	데이터 저장, 전송
-	데이터 복제, 싱크 
-	컨트롤러
-	데이터 삭제
-	컨슈머 오프셋 저장
-	코디네이터 
-
-	* zookeeper shell
-	https://zookeeper.apache.org/doc/current/zookeeperStarted.html
-	$ bin/zookeeper-shell.sh localhost:2181
-		ls /
-		get /brokers/ids/0
-		get /controller
-		ls /brokers/topics
-
-#  토픽과 파티션 
-
-# 레코드 
+### example
+example/kafka-producer/simple-kafka-producer
 
