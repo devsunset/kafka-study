@@ -8,9 +8,12 @@ import java.util.Properties;
 
 public class ProducerExactPartition {
     private final static String TOPIC_NAME = "test";
-    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
     public static void main(String[] args) {
+
+        // topic 생성
+        // $ bin/kafka-topics.sh --bootstrap-server localhost:9092 --create --topic test --partitions 3
 
         Properties configs = new Properties();
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
@@ -20,10 +23,14 @@ public class ProducerExactPartition {
         KafkaProducer<String, String> producer = new KafkaProducer<>(configs);
 
         int partitionNo = 0;
-        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, partitionNo, "Pangyo", "Pangyo");
+        ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, partitionNo, "Seoul", "Seoul");
         producer.send(record);
 
         producer.flush();
         producer.close();
+
+        // topic 확인
+        // $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --property print.key=true --property key.separator="-" --from-beginning
+
     }
 }
