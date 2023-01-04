@@ -122,3 +122,14 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- ConsumerWithASyncCommit.java
 	- ConsumerWithRebalanceListener.java
 	  RebalanceListener.java
+	- ConsumerWithExactPartition.java
+	- ConsumerWithSyncOffsetCommitShutdownHook.java
+	- ConsumerWithAutoCommit.java
+	- MultiConsumerThread.java
+	  ConsumerWorker.java
+	- MultiConsumerThreadByPartition.java
+	  ConsumerWorkerByPartition.java
+	- ConsumerWithMultiWorkerThread.java
+	  ConsumerWorkerMulit.java
+
+	  
