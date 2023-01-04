@@ -202,12 +202,12 @@ https://github.com/bjpublic/apache-kafka-with-java
 	  SingleFileSinkTask.java
 
 * example/spring-kafka/	  
-    spring-kafka-producer/
+	spring-kafka-producer/
 	spring-kafka-template-producer/
 	spring-kafka-record-listener/
 	spring-kafka-batch-listener/
-    spring-kafka-commit-listener/
-    spring-kafka-listener-container/
+	spring-kafka-commit-listener/
+	spring-kafka-listener-container/
 
 =================================================================================
 
@@ -353,7 +353,7 @@ $ docker run --rm -it -p 8000:8000 \
 	- Burrow (Open Source)
 
    * 컨슈머 랙 모니터링 아키텍처 툴
-    - 버로우
+	- 버로우
 	- 텔레그래프
 	- 엘라스틱서치
 	-그라파나 
