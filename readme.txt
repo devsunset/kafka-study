@@ -13,6 +13,9 @@ https://kafka.apache.org/documentation/
 
 https://github.com/apache/kafka
 
+https://spring.io/projects/spring-kafka#overview
+https://docs.spring.io/spring-kafka/docs/current/reference/html/
+
 https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Improvement+Proposals
 
 https://www.confluent.io/hub/
