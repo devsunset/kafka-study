@@ -49,11 +49,11 @@ public class ConfluentSimpleProducer {
 
 
         for (int i = 0; i < 1000; i++) {
-            String messageKey = "helloKafka";
-            String messageValue = "helloConfluentCloud" + i;
-            ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageKey, messageValue);
+            String messageKeySub = "helloKafka";
+            String messageValueSub = "helloConfluentCloud" + i;
+            ProducerRecord<String, String> recordSub = new ProducerRecord<>(TOPIC_NAME, messageKeySub, messageValueSub);
             try {
-                RecordMetadata metadata = producer.send(record).get();
+                RecordMetadata metadata = producer.send(recordSub).get();
                 logger.info(metadata.toString());
             } catch (Exception e) {
                 logger.error(e.getMessage(), e);

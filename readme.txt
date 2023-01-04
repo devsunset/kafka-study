@@ -151,8 +151,8 @@ https://github.com/bjpublic/apache-kafka-with-java
 	- ProducerWithSyncCallback.java
 	- ProducerWithAsyncCallback.java
 	  ProducerWithAsyncCallback.java
-	- TransactionProducer.java
 	- IdempotenceProducer.java
+	- TransactionProducer.java
 	- ConfluentSimpleProducer.java
 
 * example/kafka-consumer/
