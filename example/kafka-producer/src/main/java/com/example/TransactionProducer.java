@@ -9,10 +9,10 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class IdempotenceProducer {
-    private final static Logger logger = LoggerFactory.getLogger(IdempotenceProducer.class);
+public class TransactionProducer {
+    private final static Logger logger = LoggerFactory.getLogger(TransactionProducer.class);
     private final static String TOPIC_NAME = "test";
-    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private final static String BOOTSTRAP_SERVERS = "localhost:9092";
 
     public static void main(String[] args) {
 
@@ -20,15 +20,21 @@ public class IdempotenceProducer {
         configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, BOOTSTRAP_SERVERS);
         configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
         configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, StringSerializer.class.getName());
-        configs.put(ProducerConfig.ENABLE_IDEMPOTENCE_CONFIG, true);
+        configs.put(ProducerConfig.TRANSACTIONAL_ID_CONFIG, "my-transaction-id");
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(configs);
-
+        producer.initTransactions();
+        producer.beginTransaction();
         String messageValue = "testMessage";
         ProducerRecord<String, String> record = new ProducerRecord<>(TOPIC_NAME, messageValue);
         producer.send(record);
         logger.info("{}", record);
         producer.flush();
+
+
+        producer.commitTransaction();
+        //producer.abortTransaction();
+
         producer.close();
     }
 }

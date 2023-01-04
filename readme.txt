@@ -59,6 +59,12 @@ cd  kafka_2.12-3.3.1
 $ bin/zookeeper-server-start.sh -daemon config/zookeeper.properties
 $ jps -vm 
 
+# zookeeper.properties
+	dataDir=/tmp/zookeeper
+	clientPort=2181
+	maxClientCnxns=0
+	admin.enableServer=false
+
 * server.properties 파일 내용 체크 
 $ vi config/server.properties 
 하단 내용 설정 
@@ -69,6 +75,31 @@ advertised.listeners=PLAINTEXT://127.0.0.1:9092
 $ bin/kafka-server-start.sh -daemon config/server.properties
 $ jps -m 
 $ tail -f logs/server.log
+
+# server.properties
+	# kafka server.properties for localhost broker test
+	broker.id=0
+	num.network.threads=3
+	num.io.threads=8
+
+	# Please modify directory
+	log.dirs=/tmp/kafka
+	num.partitions=3
+	listeners=PLAINTEXT://localhost:9092
+	advertised.listeners=PLAINTEXT://localhost:9092
+	socket.send.buffer.bytes=102400
+	socket.receive.buffer.bytes=102400
+	socket.request.max.bytes=104857600
+	num.recovery.threads.per.data.dir=1
+	offsets.topic.replication.factor=1
+	transaction.state.log.replication.factor=1
+	transaction.state.log.min.isr=1
+	log.retention.hours=168
+	log.segment.bytes=1073741824
+	log.retention.check.interval.ms=300000
+	zookeeper.connect=localhost:2181
+	zookeeper.connection.timeout.ms=18000
+	group.initial.rebalance.delay.ms=0
 
 *  kafka 통신 테스트
 $ bin/kafka-broker-api-versions.sh --bootstrap-server 127.0.0.1:9092
@@ -116,6 +147,8 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- ProducerWithSyncCallback.java
 	- ProducerWithAsyncCallback.java
 	  ProducerWithAsyncCallback.java
+	- TransactionProducer.java
+	- IdempotenceProducer.java
 
 * example/kafka-consumer/
 	- SimpleConsumer.java
@@ -133,6 +166,7 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	  ConsumerWorkerByPartition.java
 	- ConsumerWithMultiWorkerThread.java
 	  ConsumerWorkerMulit.java
+	- TransactionConsumer .java
 
 * example/kafka-admin/	  
 	- KafkaAdminClient.java
