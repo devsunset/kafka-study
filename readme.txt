@@ -17,6 +17,8 @@ https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Improvement+Proposals
 
 https://www.confluent.io/hub/
 
+https://github.com/linkedin/Burrow
+
 https://ksqldb.io/
 
 ########################################################
@@ -199,6 +201,8 @@ https://github.com/bjpublic/apache-kafka-with-java
 	  SingleFileSinkConnectorConfig.java
 	  SingleFileSinkTask.java
 
+=================================================================================
+
 # 단일 모드 커넥트 
 $ bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties
 
@@ -306,16 +310,36 @@ $ docker run --rm -it -p 8000:8000 \
 	status.storage.replication.factor=1
 	config.storage.replication.factor=1
 
-$ bin/connect-mirror-maker.sh config/connect-mirror-maker.properties 
-$ bin/kafka-console-producer.sh --bootstrap-server a-kafka:9002 --topic test
-> a 
-> b 
-> c 
-$ bin/kafka-console-consumer.sh --bootstrap-server b-kafka:9092 --topic A.test --from-beginning 
-$ bin/kafka-topics.sh --bootstrap-server a-kafka:9092 --topic test --alter --partitions 5
-$ bin/kafka-topics.sh --bootstrap-server b-kafka:9092 --topic A.test --describe 
+	$ bin/connect-mirror-maker.sh config/connect-mirror-maker.properties 
+	$ bin/kafka-console-producer.sh --bootstrap-server a-kafka:9002 --topic test
+	> a 
+	> b 
+	> c 
+	$ bin/kafka-console-consumer.sh --bootstrap-server b-kafka:9092 --topic A.test --from-beginning 
+	$ bin/kafka-topics.sh --bootstrap-server a-kafka:9092 --topic test --alter --partitions 5
+	$ bin/kafka-topics.sh --bootstrap-server b-kafka:9092 --topic A.test --describe 
 
-* Geo-Replication 
-- Active-standby
-- Active-Active
-- Hub and spoke
+	* Geo-Replication 
+	- Active-standby
+	- Active-Active
+	- Hub and spoke
+
+# 컨슈머 랙 체크 
+	* 카프카 명령어를 사용하여 컨슈머 랙 조회 
+	$ bin/kafka-consumer-groups.sh --bootstrap-server localhost:9092 --group my-group --describe
+
+	* 컨슈머 metrics() 메소드를 사용하여 컨슈머 랙 조회 
+		for (Map.Entry<MetricName, ? extends Metric> entry : kafkaConsumer.metrics().
+		entrySet()) {
+			if("records-lag-max".equals(entry.getKey().name()) |
+			"records-lag".equals(entry.getKey().name()) |
+			"records-lag-avg".equals(entry.getKey().name())){
+				Metric metric = entry.getValue();
+				logger.info("{}:{}", entry.getKey().name(), metric.metricValue());
+			}
+		}
+	
+	* 외부 모니터링 툴을 사용하여 컨슈머 랙 조회 
+	- Datadog
+	- Confluent Control Center 
+	- Burrow (Open Source)
