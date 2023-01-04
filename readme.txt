@@ -115,7 +115,7 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- ProducerWithAsyncCallback.java
 	  ProducerWithAsyncCallback.java
 
-* example/kafka-consumer/simple-kafka-consumer
+* example/kafka-consumer/
 	- SimpleConsumer.java
 	- ConsumerWithSyncCommit.java
 	- ConsumerWithSyncOffsetCommit.java
