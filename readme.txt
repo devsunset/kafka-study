@@ -137,7 +137,11 @@ $ vi delete-topic.json
 {"partitions": [{"topic":"test" ,"partition": 0, "offset": 50}], "version":1}
 $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-file delete-topic.json
 
-### example
+=================================================================================
+
+### example (아파치 카프카 - book 예제 소스 )
+https://github.com/bjpublic/apache-kafka-with-java
+
 * example/kafka-producer/ 
 	- SimpleProducer.java
 	- ProducerWithKeyValue.java
