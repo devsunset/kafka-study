@@ -1,16 +1,19 @@
 package com.example;
 
 import org.apache.kafka.clients.consumer.*;
+import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
-public class ConsumerWithSyncCommit {
-    private final static Logger logger = LoggerFactory.getLogger(ConsumerWithSyncCommit.class);
+public class ConsumerWithSyncOffsetCommit {
+    private final static Logger logger = LoggerFactory.getLogger(ConsumerWithSyncOffsetCommit.class);
     private final static String TOPIC_NAME = "test";
     private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     private final static String GROUP_ID = "test-group";
@@ -28,10 +31,15 @@ public class ConsumerWithSyncCommit {
 
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(Duration.ofSeconds(1));
+            Map<TopicPartition, OffsetAndMetadata> currentOffset = new HashMap<>();
+
             for (ConsumerRecord<String, String> record : records) {
                 logger.info("record:{}", record);
+                currentOffset.put(
+                        new TopicPartition(record.topic(), record.partition()),
+                        new OffsetAndMetadata(record.offset() + 1, null));
+                consumer.commitSync(currentOffset);
             }
-            consumer.commitSync();
         }
 
         // 실행 후 producer 실행
