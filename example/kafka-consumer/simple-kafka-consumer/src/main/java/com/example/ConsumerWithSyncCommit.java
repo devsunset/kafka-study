@@ -12,7 +12,7 @@ import java.util.Properties;
 public class ConsumerWithSyncCommit {
     private final static Logger logger = LoggerFactory.getLogger(ConsumerWithSyncCommit.class);
     private final static String TOPIC_NAME = "test";
-    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private final static String BOOTSTRAP_SERVERS = "localhost:9092";
     private final static String GROUP_ID = "test-group";
 
     public static void main(String[] args) {
