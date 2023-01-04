@@ -202,10 +202,10 @@ https://github.com/bjpublic/apache-kafka-with-java
 	  SingleFileSinkTask.java
 
 * example/spring-kafka/	  
+    spring-kafka-producer/
 	spring-kafka-batch-listener/
     spring-kafka-commit-listener/
     spring-kafka-listener-container/
-    spring-kafka-producer/
     spring-kafka-record-listener/
     spring-kafka-template-producer/
 
