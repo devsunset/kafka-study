@@ -138,3 +138,5 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 * example/kafka-streams/	  
 	- SimpleStreamApplication.java
 	- StreamsFilter.java
+	- KStreamJoinKTable.java
+	- KStreamJoinGlobalKTable.java

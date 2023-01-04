@@ -10,7 +10,7 @@ import java.util.Properties;
 public class SimpleKafkaProcessor {
 
     private static String APPLICATION_NAME = "processor-application";
-    private static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private static String BOOTSTRAP_SERVERS = "localhost:9092";
     private static String STREAM_LOG = "stream_log";
     private static String STREAM_LOG_FILTER = "stream_log_filter";
 
