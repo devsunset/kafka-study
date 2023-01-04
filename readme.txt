@@ -190,9 +190,11 @@ https://github.com/bjpublic/apache-kafka-with-java
 	  MetricJsonUtils.java
 
 * example/kafka-connector/	  
+	simple-source-connector/
 	- SingleFileSourceConnector.java
 	  SingleFileSourceConnectorConfig.java
 	  SingleFileSourceTask.java
+    simple-sink-connector/
 	- SingleFileSinkConnector.java
 	  SingleFileSinkConnectorConfig.java
 	  SingleFileSinkTask.java
