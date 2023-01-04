@@ -132,4 +132,6 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- ConsumerWithMultiWorkerThread.java
 	  ConsumerWorkerMulit.java
 
-	  
+* example/kafka-admin/	  
+	- KafkaAdminClient.java
+

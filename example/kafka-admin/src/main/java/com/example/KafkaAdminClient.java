@@ -14,12 +14,12 @@ import java.util.Properties;
 
 public class KafkaAdminClient {
     private final static Logger logger = LoggerFactory.getLogger(KafkaAdminClient.class);
-    private final static String BOOTSTRAP_SERVERS = "my-kafka:9092";
+    private final static String BOOTSTRAP_SERVERS = "alert:9092";
 
     public static void main(String[] args) throws Exception {
 
         Properties configs = new Properties();
-        configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "my-kafka:9092");
+        configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         AdminClient admin = AdminClient.create(configs);
         logger.info("== Get broker information");
         for (Node node : admin.describeCluster().nodes().get()) {
