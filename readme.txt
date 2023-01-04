@@ -203,11 +203,11 @@ https://github.com/bjpublic/apache-kafka-with-java
 
 * example/spring-kafka/	  
     spring-kafka-producer/
+	spring-kafka-template-producer/
+	spring-kafka-record-listener/
 	spring-kafka-batch-listener/
     spring-kafka-commit-listener/
     spring-kafka-listener-container/
-    spring-kafka-record-listener/
-    spring-kafka-template-producer/
 
 =================================================================================
 
