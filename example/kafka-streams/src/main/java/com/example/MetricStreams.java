@@ -1,4 +1,4 @@
-package com.pipeline;
+package com.example;
 
 import org.apache.kafka.streams.StreamsConfig;
 import org.apache.kafka.common.serialization.Serdes;
