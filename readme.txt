@@ -283,3 +283,39 @@ $ docker run --rm -it -p 8000:8000 \
            -e "CONNECT_URL=http://{{my-ip}}:8083" \
            landoop/kafka-connect-ui
 
+# 카프카 미러케이커2 
+ config/ connect-mirror-maker.properties
+* connect-mirror-maker.properties
+	clusters = A, B
+
+	A.bootstrap.servers = a-kafka:9092
+	B.bootstrap.servers = b-kafka:9092
+
+	A->B.enabled = true
+	A->B.topics = test
+
+	B->A.enabled = false
+	B->A.topics = .*
+
+	replication.factor=1
+
+	checkpoints.topic.replication.factor=1
+	heartbeats.topic.replication.factor=1
+	offset-syncs.topic.replication.factor=1
+	offset.storage.replication.factor=1
+	status.storage.replication.factor=1
+	config.storage.replication.factor=1
+
+$ bin/connect-mirror-maker.sh config/connect-mirror-maker.properties 
+$ bin/kafka-console-producer.sh --bootstrap-server a-kafka:9002 --topic test
+> a 
+> b 
+> c 
+$ bin/kafka-console-consumer.sh --bootstrap-server b-kafka:9092 --topic A.test --from-beginning 
+$ bin/kafka-topics.sh --bootstrap-server a-kafka:9092 --topic test --alter --partitions 5
+$ bin/kafka-topics.sh --bootstrap-server b-kafka:9092 --topic A.test --describe 
+
+* Geo-Replication 
+- Active-standby
+- Active-Active
+- Hub and spoke
