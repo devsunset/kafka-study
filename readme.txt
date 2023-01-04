@@ -15,6 +15,8 @@ https://github.com/apache/kafka
 
 https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Improvement+Proposals
 
+https://www.confluent.io/hub/
+
 https://ksqldb.io/
 
 ########################################################
@@ -140,3 +142,7 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- StreamsFilter.java
 	- KStreamJoinKTable.java
 	- KStreamJoinGlobalKTable.java
+	- SimpleKafkaProcessor.java
+	  FilterProcessor.java
+	- KStreamCountApplication.java
+	- QueryableStore.java
