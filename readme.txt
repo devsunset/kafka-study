@@ -190,6 +190,13 @@ https://github.com/bjpublic/apache-kafka-with-java
 	  MetricJsonUtils.java
 
 * example/kafka-connector/	  
+	- SingleFileSourceConnector.java
+	  SingleFileSourceConnectorConfig.java
+	  SingleFileSourceTask.java
+	- SingleFileSinkConnector.java
+	  SingleFileSinkConnectorConfig.java
+	  SingleFileSinkTask.java
+
 # 단일 모드 커넥트 
 $ bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties
 
@@ -274,4 +281,3 @@ $ docker run --rm -it -p 8000:8000 \
            -e "CONNECT_URL=http://{{my-ip}}:8083" \
            landoop/kafka-connect-ui
 
-		   
