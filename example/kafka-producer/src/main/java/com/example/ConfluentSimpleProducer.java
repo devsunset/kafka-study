@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
-public class SimpleProducer {
-    private final static Logger logger = LoggerFactory.getLogger(SimpleProducer.class);
+public class ConfluentSimpleProducer {
+    private final static Logger logger = LoggerFactory.getLogger(ConfluentSimpleProducer.class);
     private final static String TOPIC_NAME = "test.log";
     private final static String BOOTSTRAP_SERVERS = "pkc-4v1gp.ap-northeast-1.aws.confluent.cloud:9092";
     private final static String SECURITY_PROTOCOL = "SASL_SSL";

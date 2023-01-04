@@ -17,7 +17,7 @@ public class MetricStreams {
 
         Properties props = new Properties();
         props.put(StreamsConfig.APPLICATION_ID_CONFIG, "metric-streams-application");
-        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "my-kafka:9092");
+        props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
         props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 
@@ -25,8 +25,7 @@ public class MetricStreams {
         KStream<String, String> metrics = builder.stream("metric.all");
         KStream<String, String>[] metricBranch = metrics.branch(
                 (key, value) -> MetricJsonUtils.getMetricName(value).equals("cpu"),
-        (key, value) -> MetricJsonUtils.getMetricName(value).equals("memory")
-        );
+                (key, value) -> MetricJsonUtils.getMetricName(value).equals("memory"));
 
         metricBranch[0].to("metric.cpu");
         metricBranch[1].to("metric.memory");

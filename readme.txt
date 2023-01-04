@@ -149,6 +149,7 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	  ProducerWithAsyncCallback.java
 	- TransactionProducer.java
 	- IdempotenceProducer.java
+	- ConfluentSimpleProducer.java
 
 * example/kafka-consumer/
 	- SimpleConsumer.java
@@ -167,6 +168,7 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	- ConsumerWithMultiWorkerThread.java
 	  ConsumerWorkerMulit.java
 	- TransactionConsumer .java
+	- ConfluentSimpleConsumer.java
 
 * example/kafka-admin/	  
 	- KafkaAdminClient.java
@@ -180,3 +182,5 @@ $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-fi
 	  FilterProcessor.java
 	- KStreamCountApplication.java
 	- QueryableStore.java
+	- MetricStreams.java
+	  MetricJsonUtils.java

@@ -15,8 +15,8 @@ import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
 
-public class SimpleConsumer {
-    private final static Logger logger = LoggerFactory.getLogger(SimpleConsumer.class);
+public class ConfluentSimpleConsumer {
+    private final static Logger logger = LoggerFactory.getLogger(ConfluentSimpleConsumer.class);
     private final static String TOPIC_NAME = "test.log";
     private final static String BOOTSTRAP_SERVERS = "pkc-4v1gp.ap-northeast-1.aws.confluent.cloud:9092";
     private final static String SECURITY_PROTOCOL = "SASL_SSL";
