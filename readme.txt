@@ -194,7 +194,7 @@ https://github.com/bjpublic/apache-kafka-with-java
 	- SingleFileSourceConnector.java
 	  SingleFileSourceConnectorConfig.java
 	  SingleFileSourceTask.java
-     simple-sink-connector/
+	simple-sink-connector/
 	- SingleFileSinkConnector.java
 	  SingleFileSinkConnectorConfig.java
 	  SingleFileSinkTask.java
