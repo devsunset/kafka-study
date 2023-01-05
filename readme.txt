@@ -36,11 +36,6 @@ https://github.com/bjpublic/apache-kafka-with-java
 
 https://github.com/AndersonChoi/
 
-- blog
-https://velog.io/@jaehyeong/Apache-Kafka아파치-카프카란-무엇인가
-https://soft.plusblog.co.kr/category/정리 예정
-https://pearlluck.tistory.com/category/Big%20Data/Kafka
-
 - 동영상 강좌 
 https://www.youtube.com/watch?v=waw0XXNX-uQ&list=PL3Re5Ri5rZmkY46j6WcJXQYRlDRZSUQ1j
 
@@ -49,6 +44,12 @@ https://www.youtube.com/watch?v=iUX6d14bvj0
 https://www.youtube.com/watch?v=dubFjEXuK6w
 https://www.youtube.com/watch?v=oyNjiQ2q2CE
 https://www.youtube.com/watch?v=3OPZ7_sHtWo
+
+- blog
+https://velog.io/@jaehyeong/Apache-Kafka아파치-카프카란-무엇인가
+https://soft.plusblog.co.kr/category/정리 예정
+https://pearlluck.tistory.com/category/Big%20Data/Kafka
+
 
 ########################################################
 ### Kafka Guide
