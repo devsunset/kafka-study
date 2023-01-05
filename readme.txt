@@ -371,12 +371,39 @@ $ docker run --rm -it -p 8000:8000 \
 * 사용자 이벤트 --- (Rest Api) ---> 프로듀서 APP  ---> Kafka ---> 컨슈머 APP ---> 하둡 
 * 사용자 이벤트 --- (Rest Api) ---> 프로듀서 APP  ---> Kafka ---> 분산 커넥트  ---> 엘라스틱서치 
 
-- 작업 리스트 
+# 작업 리스트 
 * 로컬 하둡, 엘라스틱서치 , 키바나 설치
 * 토픽 생성
 * 이벤트 수집 웹페이지 개발
 * REST API 프로듀서 애플리케이션 개발
 * 하둡 적재 컨슈머 애플리케이션 개발
 * 엘라스틱서치 싱크 커넥터 개발 
+
+1.  로컬 하둡, 엘라스틱서치 , 키바나 설치
+brew install hadoop elasticsearch kibana
+
+hadoop - core-site.xml 
+<configuration>
+ <property>
+  <name>fs.defaultFS</name>
+  <value>hdfs://localhost:9000</value>
+ </property>
+</configuration>
+
+2.  토픽 생성
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic select-color 
+
+3.  이벤트 수집 웹페이지 개발 
+example/practical_example/favorite-color-webpage/index.html 
+
+4. REST API 프로듀서 애플리케이션 개발
+example/practical_example/kafka-spring-producer-with-rest-controller
+
+5. 하둡 적재 컨슈머 애플리케이션 개발
+example/practical_example/kafka-multi-consumer-thread-hdfs-save
+
+6. 엘라스틱서치 싱크 커넥터 개발 
+example/practical_example/elasticsearch-kafka-connector
+
 
 
