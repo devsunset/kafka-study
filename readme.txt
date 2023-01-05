@@ -46,6 +46,8 @@ https://www.youtube.com/watch?v=oyNjiQ2q2CE
 https://www.youtube.com/watch?v=3OPZ7_sHtWo
 
 - blog
+https://blog.voidmainvoid.net/
+https://blog.voidmainvoid.net/category/빅데이터/Kafka
 https://velog.io/@jaehyeong/Apache-Kafka아파치-카프카란-무엇인가
 https://soft.plusblog.co.kr/category/정리 예정
 https://pearlluck.tistory.com/category/Big%20Data/Kafka
@@ -551,3 +553,6 @@ $ cd kafka-docker
 $ docker-compose -f docker-compose-single-broker.yml up -d 
 $ docker ps 
 $ docker-compose down 
+
+* AWS에 카프카 클러스터 설치하기(ec2, 3 brokers) 
+https://blog.voidmainvoid.net/325
