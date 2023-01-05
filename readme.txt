@@ -20,10 +20,9 @@ https://docs.spring.io/spring-kafka/docs/current/reference/html/
 
 https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Improvement+Proposals
 
-https://www.confluent.io/hub/
-
 https://github.com/linkedin/Burrow
 
+https://www.confluent.io/hub/
 
 https://ksqldb.io/
 
@@ -43,13 +42,13 @@ https://velog.io/@jaehyeong/Apache-Kafka아파치-카프카란-무엇인가
 https://engkimbs.tistory.com/691
 
 - 동영상 강좌 
+https://www.youtube.com/watch?v=waw0XXNX-uQ&list=PL3Re5Ri5rZmkY46j6WcJXQYRlDRZSUQ1j
+
 https://www.youtube.com/watch?v=VJKZvOASvUA
 https://www.youtube.com/watch?v=iUX6d14bvj0
 https://www.youtube.com/watch?v=dubFjEXuK6w
 https://www.youtube.com/watch?v=oyNjiQ2q2CE
 https://www.youtube.com/watch?v=3OPZ7_sHtWo
-
-https://www.youtube.com/watch?v=waw0XXNX-uQ&list=PL3Re5Ri5rZmkY46j6WcJXQYRlDRZSUQ1j
 
 ########################################################
 ### Kafka Guide
