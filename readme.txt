@@ -9,6 +9,8 @@
 
 https://kafka.apache.org/
 
+https://www.confluent.io/
+
 https://kafka.apache.org/documentation/
 
 https://github.com/apache/kafka
@@ -21,6 +23,7 @@ https://cwiki.apache.org/confluence/display/KAFKA/Kafka+Improvement+Proposals
 https://www.confluent.io/hub/
 
 https://github.com/linkedin/Burrow
+
 
 https://ksqldb.io/
 
