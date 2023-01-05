@@ -34,12 +34,12 @@ https://kafka.apache.org/quickstart
 - 아파치 카프카 - book 예제 소스 
 https://github.com/bjpublic/apache-kafka-with-java
 
+https://github.com/AndersonChoi/
+
 - blog
-https://www.redhat.com/ko/topics/integration/what-is-apache-kafka
-https://pearlluck.tistory.com/288
-https://soft.plusblog.co.kr/3
 https://velog.io/@jaehyeong/Apache-Kafka아파치-카프카란-무엇인가
-https://engkimbs.tistory.com/691
+https://soft.plusblog.co.kr/category/정리 예정
+https://pearlluck.tistory.com/category/Big%20Data/Kafka
 
 - 동영상 강좌 
 https://www.youtube.com/watch?v=waw0XXNX-uQ&list=PL3Re5Ri5rZmkY46j6WcJXQYRlDRZSUQ1j
@@ -541,3 +541,12 @@ $ bin/kafka-console-consumer.sh --bootstrap-server b-kafka:9092 --topic A.weathe
 ## 상용 인프라 아키텍처 
 * 미러메이커2 : 2개 이상의 서버 
 
+=================================================================================
+
+#  ETC 
+* 로컬 테스트용 카프카 도커 이미지 실행
+$ git clone https://github.com/AndersonChoi/kafka-docker.git
+$ cd kafka-docker
+$ docker-compose -f docker-compose-single-broker.yml up -d 
+$ docker ps 
+$ docker-compose down 
