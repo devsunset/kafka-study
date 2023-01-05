@@ -429,3 +429,113 @@ example/practical_example/elasticsearch-kafka-connector
 
 ## 서버 지표 수집 파이프라인 생성과 카프카 스트림즈 활용
 
+1.  토픽 생성
+- 서버 전체 지표들을 저장하는 토픽 생성 
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 \
+--replication-factor 2 --partitions 3 --topic metric.all 
+
+- CPU 지표를  저장하는 토픽 생성 
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 \
+--replication-factor 2 --partitions 3 --topic metric.cpu
+
+- 메모리 지표를  저장하는 토픽 생성 
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 \
+--replication-factor 2 --partitions 3 --topic metric.memory 
+
+- 비정상  지표를  저장하는 토픽 생성 
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 \
+--replication-factor 2 --partitions 3 --topic metric.cpu.alert
+
+상용 아키텍처에 적용하는 것을 기준으로 replication-factor 2 로 설정 싱글 브로커로 구성된 환경이면 1로 설정 
+
+2.  메트릭비트 설치 및 설정
+$ brew install metricbeat
+$ brew info metricbeat
+
+$ cd 메트릭설치 bin폴더 
+$ vi metricbeat.yaml 
+metricbeat.modules:
+  - module: system
+    metricsets:
+      - cpu
+      - memory
+    enabled: true
+    period: 10s
+    processes: [".*"]
+
+output.kafka:
+  hosts: ["localhost:9092"]
+  topic: "metric.all"
+
+  3. 카프카 스트림즈 개발 
+  * example/kafka-streams/	  
+	- MetricStreams.java
+	  MetricJsonUtils.java
+
+스트림즈에서 필요한 JSON 구조
+* 전체 CPU 사용량 퍼센티지 : system > cpu > total > norm > pct 값
+* 메트릭 종류 추출 : metricset > name 값
+* 호스트 이름과 timestamp 값 조합
+   * 호스트 이름 : host > name 값 
+   * timestamp 값 : @timestamp 값 
+
+4. 기능 테스트 
+- 메트릭비트 실행
+$ ./metricbeat -c metricbeat.yaml 
+확인) $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic metric.all --from-beginning
+
+- 스트림 애플리케이션 실행 
+ MetricStreams.java 실행 
+ 확인) $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic metric.cpu --from-beginning
+          $ bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic metric.cpu.alert --from-beginning
+
+## 상용 인프라 아키텍처 
+* 카프카 클러스터 : 3개 이상의 브로커로 구성
+* 스트림즈 : 2개 이상의 서버, 각 서버당 1개 스트림즈 애플리케이션 (스케일 아웃을 통해 처리량 늘릴 수 있음)
+* 커넥트 : 서버 지표 데이터 저장용, 2개 이상의 서버, 분산 모드 커넥트로 구성 
+
+--------------------------------------------
+
+## 미러메이커2를 사용한 토픽 미러링 
+
+1. config/ connect-mirror-maker.properties 파일 설정
+* connect-mirror-maker.properties
+    ---------------------------------
+	clusters = A, B
+
+	A.bootstrap.servers = a-kafka:9092
+	B.bootstrap.servers = b-kafka:9092
+
+	A->B.enabled = true
+	A->B.topics = weather.seoul
+
+	B->A.enabled = false
+	B->A.topics = .*
+
+	replication.factor=1
+
+	checkpoints.topic.replication.factor=1
+	heartbeats.topic.replication.factor=1
+	offset-syncs.topic.replication.factor=1
+	offset.storage.replication.factor=1
+	status.storage.replication.factor=1
+	config.storage.replication.factor=1
+    ---------------------------------
+
+2. 클러스터 A에 weather.seoul 토픽 생성 
+$ bin/kafka-topics.sh --create --bootstrap-server a-kafka:9092 --partitions 3 --topic weather.seoul 
+
+3. 미러메이커2 실행 
+$ bin/connect-mirror-maker.sh config/connect-mirror-maker.peoperties
+확인) $ bin/kafka-topics.sh --bootstrap-server b-kafka:9092 --list A.weather.seoul 
+         $ bin/kafka-topics.sh --bootstrap-server b-kafka:9092 --list A.weather.seoul  --describe
+
+$ bin/kafka-console-producer.sh --bootstrap-server a-kafka:9092 --topic weather.seoul
+> sunny
+> cloudy
+
+$ bin/kafka-console-consumer.sh --bootstrap-server b-kafka:9092 --topic A.weather.seoul --from-beginning
+
+## 상용 인프라 아키텍처 
+* 미러메이커2 : 2개 이상의 서버 
+
