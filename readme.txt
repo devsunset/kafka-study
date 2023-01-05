@@ -393,7 +393,8 @@ hadoop - core-site.xml
 </configuration>
 
 2.  토픽 생성
-$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 3 --topic select-color 
+$ bin/kafka-topics.sh --create --bootstrap-server localhost:9092 \
+--replication-factor 1 --partitions 3 --topic select-color 
 
 3.  이벤트 수집 웹페이지 개발 
 example/practical_example/favorite-color-webpage/index.html 
