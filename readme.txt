@@ -8,8 +8,8 @@
 ### KAFKA
 
 https://kafka.apache.org/
-
 https://www.confluent.io/
+https://aws.amazon.com/ko/msk/
 
 https://kafka.apache.org/documentation/
 
