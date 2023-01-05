@@ -142,7 +142,7 @@ $ vi delete-topic.json
 {"partitions": [{"topic":"test" ,"partition": 0, "offset": 50}], "version":1}
 $ bin/kafka-delete-records.sh --bootstrap-server localhost:9092 --offset-json-file delete-topic.json
 
-=================================================================================
+--------------------------------------------------------------------------------
 
 ### example (아파치 카프카 - book 예제 소스 )
 https://github.com/bjpublic/apache-kafka-with-java
@@ -212,7 +212,7 @@ https://github.com/bjpublic/apache-kafka-with-java
 	spring-kafka-commit-listener/
 	spring-kafka-listener-container/
 
-=================================================================================
+--------------------------------------------------------------------------------
 
 # 단일 모드 커넥트 
 $ bin/connect-standalone.sh config/connect-standalone.properties config/connect-file-source.properties
@@ -301,6 +301,7 @@ $ docker run --rm -it -p 8000:8000 \
 # 카프카 미러케이커2 
  config/ connect-mirror-maker.properties
 * connect-mirror-maker.properties
+    ---------------------------------
 	clusters = A, B
 
 	A.bootstrap.servers = a-kafka:9092
@@ -320,6 +321,7 @@ $ docker run --rm -it -p 8000:8000 \
 	offset.storage.replication.factor=1
 	status.storage.replication.factor=1
 	config.storage.replication.factor=1
+    ---------------------------------
 
 	$ bin/connect-mirror-maker.sh config/connect-mirror-maker.properties 
 	$ bin/kafka-console-producer.sh --bootstrap-server a-kafka:9002 --topic test
@@ -361,4 +363,12 @@ $ docker run --rm -it -p 8000:8000 \
 	- 엘라스틱서치
 	-그라파나 
 
+=================================================================================
 
+### 실전예제 
+
+# 아키텍처 
+			
+* 사용자 이벤트 --- (Rest Api) ---> 프로듀서 APP  ---> Kafka ---> 컨슈머 APP ---> Hadoop 
+																							   ---> 분산 커넥트  ---> 엘라스틱서치 
+																							    
